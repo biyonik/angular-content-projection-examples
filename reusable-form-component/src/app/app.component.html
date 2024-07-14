@@ -1,0 +1,46 @@
+<!-- jumbotron -->
+
+<div class="jumbotron jumbotron-icon">
+    <div class="container">
+        <h1 class="jumbotron-heading">Reusable Form Component</h1>
+        <p class="lead text-muted">A reusable form component</p>
+    </div>
+</div>
+
+<!-- form -->
+
+<div class="container">
+    <form class="form g-3">
+        <div class="row mb-3">
+            <app-form-element-wrapper
+                [label]="'First Name'"
+                [tooltip]="'Enter your first name only'"
+                [validation]="firstname.touched && firstname.errors ? firstname.errors : {}"
+            >
+                <input type="text" #firstname="ngModel" name="firstname" class="form-control" placeholder="First name" required minlength="5" [(ngModel)]="formObject().firstname">
+            </app-form-element-wrapper>
+        </div>
+
+        <div class="row mb-3">
+            <app-form-element-wrapper
+                [label]="'Last Name'"
+                [tooltip]="'Enter your last name only'"
+                [validation]="lastname.touched && lastname.errors ? lastname.errors : {}"
+            >
+                <input type="text" #lastname="ngModel" name="lastname" class="form-control" placeholder="Last name" required minlength="5" [(ngModel)]="formObject().lastname">
+            </app-form-element-wrapper>
+        </div>
+
+        <div class="row mb-3">
+            <app-form-element-wrapper
+                [label]="'User Name'"
+                [tooltip]="'Enter your user name only'"
+                [validation]="username.touched && username.errors ? username.errors : {}"
+            >
+                <input type="text" #username="ngModel" name="username" class="form-control" placeholder="User name" required minlength="5" [(ngModel)]="formObject().username">
+            </app-form-element-wrapper>
+        </div>
+    </form>
+
+    {{formObject() | json}}
+</div>
